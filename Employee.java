@@ -46,5 +46,3 @@ public class Employee {
         this.setNetSalary(netSalary);
     }
 }
-
-// oldSalaryPerMonth + (oldSalaryPerMonth * hike/100)
