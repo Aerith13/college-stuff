@@ -1,36 +1,50 @@
-import java.util.Scanner;
 
 public class Employee {
 
-    int id;
-    String name;
-    String surname;
-    float salary;
-}
+    private int employeeId;
+    private String employeeName;
+    private double salary;
+    private double netSalary;
 
-class Main {
-    public static void main(String args[]) {
-        try (Scanner sc = new Scanner(System.in)) {
-            System.out.print("How many employees? ");
-            int n = sc.nextInt();
-            Employee emp[] = new Employee[n];
-            for (int i = 0; i < n; i++) {
-                emp[i] = new Employee();
-                System.out.println("Employee " + (i + 1) + " data ");
-                System.out.print("Enter employee id :");
-                emp[i].id = sc.nextInt();
-                System.out.print("Enter employee first name :");
-                emp[i].name = sc.next();
-                System.out.print("Enter employee surname :");
-                emp[i].surname = sc.next();
-                System.out.print("Enter employee salary :");
-                emp[i].salary = sc.nextFloat();
-            }
-            System.out.println("\n\n********* All Employee Details are :*********\n");
-            for (int i = 0; i < n; i++) {
-                System.out.println("Employee id, Name, Surname and Salary :" + emp[0].id + " " + emp[i].name + " "
-                        + emp[i].surname + " " + emp[i].salary);
-            }
-        }
+    // Setters
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    private void setNetSalary(double netSalary) {
+        this.netSalary = netSalary;
+    }
+
+    // Getters
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public double getNetSalary() {
+        return netSalary;
+    }
+
+    public void calculateNetSalary(double Percentage) {
+        double Amount = salary + (salary * Percentage / 100);
+        double netSalary = salary + Amount;
+        this.setNetSalary(netSalary);
     }
 }
+
+// oldSalaryPerMonth + (oldSalaryPerMonth * hike/100)
