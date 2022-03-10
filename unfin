@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Salary {
+
+    public static void main(String[] args) {
+
+        // takes salary per hour
+        // num of hours per work per day
+
+        System.out.println("Lab Activity #5");
+        System.out.println("Please fill out employee details:");
+
+        System.out.print("Enter hourly rate (PHP): ");
+        try (Scanner in = new Scanner(System.in)) {
+            double HourlyRate = in.nextInt();
+            System.out.println("Enter daily working hours: ");
+            double totalHours = in.nextInt();
+            int standardHours = 6;
+            int add = 4000;
+            double totalWage;
+            double overtimeBonus = 2000;
+            System.out.println("Computing monthly salary...");
+            if (totalHours > 6)
+                totalWage = (HourlyRate * totalHours)
+                        + (totalHours - standardHours) * overtimeBonus;
+            else if (totalHours < 6)
+                totalWage = HourlyRate * totalHours;
+            else
+                totalWage = HourlyRate * standardHours;
+
+            System.out.println("Result: " + totalWage);
