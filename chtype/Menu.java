@@ -81,7 +81,7 @@ public class Menu {
                         }
                         break;
                     case 6:
-                        System.out.println("GoodBye 🤟🏽.");
+                        System.out.println("GoodBye.");
                         break;
                 }
             } while (ch != 6);
