@@ -1,0 +1,140 @@
+package dude;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+public class Window extends JFrame implements KeyListener {
+
+	private static final long serialVersionUID = -8320215447733290055L;
+	
+	private JLabel west;
+	private JLabel east;
+	private JLabel north;
+	private JLabel south;
+	private JLabel center;
+	private Color defaultColor;
+	
+	public Window(String title) {
+		super(title);
+		this.setSize(500,300);
+		
+		this.addKeyListener(this);
+		
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		this.setLayout(new BorderLayout());
+		
+		setDefaultColor(this.getBackground());
+		
+		west = new JLabel("West");
+		west.setOpaque(true);
+		
+		east = new JLabel("East");
+		east.setOpaque(true);
+		
+		north = new JLabel("North");
+		north.setVerticalAlignment(SwingConstants.CENTER);
+		north.setHorizontalAlignment(SwingConstants.CENTER);
+		north.setOpaque(true);
+		
+		south = new JLabel("South");
+		south.setVerticalAlignment(SwingConstants.CENTER);
+		south.setHorizontalAlignment(SwingConstants.CENTER);
+		south.setOpaque(true);
+		
+		center = new JLabel("Center");
+		center.setHorizontalAlignment(SwingConstants.CENTER);
+		center.setVerticalAlignment(SwingConstants.CENTER);
+		center.setOpaque(true);
+		
+		
+		this.getContentPane().add(west, BorderLayout.WEST);
+		this.getContentPane().add(east, BorderLayout.EAST);
+		this.getContentPane().add(north, BorderLayout.NORTH);
+		this.getContentPane().add(south, BorderLayout.SOUTH);
+		this.getContentPane().add(center, BorderLayout.CENTER);
+	}
+	
+	public static void main(String[] args) {
+		Window win =  new Window("Mouse Control");
+		win.setVisible(true);
+	}
+	
+	public void keyTyped(KeyEvent e) {
+		
+	}
+	
+	public void keyPressed(KeyEvent e) {
+		switch(e.getKeyCode()) {
+		case KeyEvent.VK_A:
+			west.setBackground(Color.PINK);
+			break;
+		case KeyEvent.VK_D:
+			east.setBackground(Color.GREEN);
+			break;
+		case KeyEvent.VK_W:
+			north.setBackground(Color.GRAY);
+			break;
+		case KeyEvent.VK_S:
+			south.setBackground(Color.MAGENTA);
+			break;
+		case KeyEvent.VK_X:
+			center.setBackground(Color.CYAN);
+			break;
+			
+			
+			//reset key
+		case KeyEvent.VK_R:
+			east.setBackground(Color.WHITE);
+			west.setBackground(Color.WHITE);
+			north.setBackground(Color.WHITE);
+			south.setBackground(Color.WHITE);
+			center.setBackground(Color.WHITE);
+			break;
+		}
+	}
+	public void keyReleased(KeyEvent e) {
+		switch(e.getKeyCode()) {
+		case KeyEvent.VK_A:
+			west.setBackground(Color.WHITE);
+			break;
+		case KeyEvent.VK_D:
+			east.setBackground(Color.WHITE);
+			break;
+		case KeyEvent.VK_W:
+			north.setBackground(Color.WHITE);
+			break;
+		case KeyEvent.VK_S:
+			south.setBackground(Color.WHITE);
+			break;
+		case KeyEvent.VK_X:
+			center.setBackground(Color.WHITE);
+			break;
+			
+			
+			//reset key
+		case KeyEvent.VK_R:
+			east.setBackground(Color.WHITE);
+			west.setBackground(Color.WHITE);
+			north.setBackground(Color.WHITE);
+			south.setBackground(Color.WHITE);
+			center.setBackground(Color.WHITE);
+			break;
+		}
+		
+	}
+
+	public Color getDefaultColor() {
+		return defaultColor;
+	}
+
+	public void setDefaultColor(Color defaultColor) {
+		this.defaultColor = defaultColor;
+	}
+	
+	
+	
+
+}
