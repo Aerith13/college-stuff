@@ -1,0 +1,59 @@
+package mouse;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseEvent;
+import java.io.Serial;
+
+
+public class Main extends JFrame implements MouseMotionListener {
+    private final JPanel mousepanel;
+    private final JLabel statusbar;
+
+    // This UID is required in compilation
+    //
+    @Serial
+    private static final long serialVersionUID = -7863757634140578330L;
+
+    // Define the BasicDraw constructor
+    // with the frame title as the parameter
+    //
+    public Main (String title) {
+
+        super(title);  // Call JFrame's constructor
+        setSize(300,300); // Set the dimension of the frame to 300x300
+        mousepanel = new JPanel();
+        mousepanel.setBackground(Color.white);
+        statusbar = new JLabel("Doing Nothing");
+        add(mousepanel, BorderLayout.CENTER);
+        mousepanel.add(statusbar);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Set MouseMotionListener
+        mousepanel.addMouseMotionListener(this);
+    }
+
+
+    public static void main(String[] args) {
+        // Instantiate object f using the BasicDraw class"
+        // with the Basic Draw Demo title
+        //
+        Main  f = new Main ("MouseMotionListener");
+
+        // Display the BasicDraw frame
+        //
+        f.setVisible(true);
+    }
+
+
+    public void mouseDragged(MouseEvent e) {
+        statusbar.setText("You Dragged the mouse");
+        mousepanel.setBackground(Color.red);
+    }
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        statusbar.setText( "You Moved the mouse");
+        mousepanel.setBackground(Color.white);
+    }
+}
